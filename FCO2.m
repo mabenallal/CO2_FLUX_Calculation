@@ -1,8 +1,8 @@
 %% Function for the calculation or air-sea CO2 flux
-function [K,F_CO2, dpCO2]=FCO2(pCO2_agua, pCO2_atm,T,S,u,Ref)
+function [K,F_CO2, dpCO2]=FCO2(pCO2_aqua, pCO2_atm,T,S,u,Ref)
   
    %INPUTS
-   %pCO2_agua= seawater pCO2 (uatm)
+   %pCO2_aqua= seawater pCO2 (uatm)
    %pCO2_atm=  atmospheric pCO2 (uatm)
    %T=  Temperature (Celsius)
    %S=  Salinity 
@@ -56,7 +56,7 @@ function [K,F_CO2, dpCO2]=FCO2(pCO2_agua, pCO2_atm,T,S,u,Ref)
    end
    
    
-   dpCO2=pCO2_agua-pCO2_atm; 
+   dpCO2=pCO2_aqua-pCO2_atm; 
    a=Ko_weiss(T,S);    %Solibility in mmol L^-1 atm^-1 or mmol m^-3 uatm^-1    
    F_CO2 =0.24*K.*a.*dpCO2; %CO2 flux (mmol m^-2 d^-1)
 end
@@ -72,7 +72,7 @@ Ln_Ko=A(1)+(A(2).*(100./T))+(A(3).*log(T./100))+S.*(B(1)+(B(2).*(T./100))+(B(3).
 Ko=exp(Ln_Ko);
 end
 %% ******** Schmidt Number*********
-%For water of salinity=35 and temperature range 0-30°C    %%%%%%%%%%%%
+%For water of salinity=35 and temperature range 0-30Â°C    %%%%%%%%%%%%
 function [Sc]=Schmidt(T)
     A = 2073.1;     B = 125.62;     C = 3.6276;     D = 0.043219;
     Sc= A - (B.*T)+(C.*T.^2)-(D.*T.^3);    
@@ -81,7 +81,7 @@ end
 %% From and modified : 
         %   Cecilia Chapa Balcorta 
         %   Ensenada, Baja California
-        %   UNIVERSIDAD AUTÓNOMA DE BAJA CALIFORNIA/ UNIVERSIDAD DEL MAR  
+        %   UNIVERSIDAD AUTÃ“NOMA DE BAJA CALIFORNIA/ UNIVERSIDAD DEL MAR  
 
 %       last version of 11/10/2016 
 %                      By BENALLAL MOHAMED ANIS 
